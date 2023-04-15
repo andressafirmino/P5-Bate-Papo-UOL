@@ -2,9 +2,6 @@
     box-sizing: border-box;
 }
 
-body {
-}
-
 .top {
     width: 100%;
     height: 80px;
@@ -52,6 +49,38 @@ body {
     
     /*display: flex;
     text-align: center;*/
+}
+
+input::placeholder {
+    font-style: italic;
+    font-weight: 400px;
+    font-size: 18px;
+    color: #000000;
+    border: none;
+}
+input:focus {
+    outline: none;
+}
+input {
+    font-style: normal;
+    font-size: 18px;
+    font-weight: 400px;
+    color: #000000;
+    border: none;
+}
+
+button {
+    background-color: #FFFFFF;
+    border: none;
+}
+ion-icon {
+    font-size: 26px;
+    background-color: #FFFFFF;
+    
+}
+
+ion-icon:hover {
+    color: #726f6f;
 }
 
 .entrou,
