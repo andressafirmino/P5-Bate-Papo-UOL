@@ -54,24 +54,28 @@ function renderizarMensagens (foi){
     for (let i = 0; i < qtdeMensagem.length; i++) {
         if (foi.data[i].type === 'status') {
           mensagem.innerHTML +=
-            `<div class="status" data-test="message"><span class="hora">${foi.data[i].time}
+            `<div class="status" data-test="message"><span class="hora">(${foi.data[i].time}) 
             </span> <span class="nome">${foi.data[i].from}
             </span> <span class="mensagem">${foi.data[i].text}
             </span></div>`
         }
         else if (foi.data[i].type === 'message') {
             mensagem.innerHTML +=
-              `<div class="status" data-test="message"><span class="hora">${foi.data[i].time}
+              `<div class="todos" data-test="message"><span class="hora">(${foi.data[i].time}) 
               </span> <span class="nome">${foi.data[i].from} 
-              </span> para <span class ="todos">${foi.data[i].to}:
+              </span> <span class="mensagem">para 
+              </span> <span class ="nome">${foi.data[i].to}:
               </span> <span class="mensagem">${foi.data[i].text}
               </span></div>`
           }
-          else if (foi.data[i].type === 'private_message') {
+          else if (foi.data[i].type === 'private_message' &&
+           ((foi.data[i].from === nickObj.name) ||
+            (foi.data[i].to === nickObj.name))) {
             mensagem.innerHTML +=
-              `<div class="status" data-test="message"><span class="hora">${foi.data[i].time}
+              `<div class="privado" data-test="message"><span class="hora">(${foi.data[i].time}) 
               </span> <span class="nome">${foi.data[i].from}
-              </span> reservadamente para <span class ="todos">${foi.data[i].to}:
+              </span> <span class="mensagem"> reservadamente para 
+              </span> <span class ="todos">${foi.data[i].to}:
               </span> <span class="mensagem">${foi.data[i].text}
               </span></div>`
           }
@@ -90,6 +94,7 @@ function enviarMensagem () {
         console.log(qualquer);
         exibirMensagens ()});
     enviar.catch(recarregarSala);
+    document.getElementById('textoDigitado').value = ""; 
 }
 
 function recarregarSala () {
