@@ -22,7 +22,7 @@ function nickNaoAceito (naofoi) {
     perguntarNome();
 }
 
-//function exibirMensagens (enviadas) {
+/*function exibirMensagens (enviadas) {
 
     let enviadasDoServidor = axios.get('https://mock-api.driven.com.br/api/vm/uol/messages');
     console.log(enviadasDoServidor);
@@ -31,7 +31,7 @@ function nickNaoAceito (naofoi) {
 
     for (let i = 0; i < enviadasDoServidor.lenght; i++) {
 
-    }
+    }*/
 
 /*function enviarMensagem () {
     alert('oi');
