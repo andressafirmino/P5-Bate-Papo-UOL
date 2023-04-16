@@ -37,6 +37,4 @@ function exibirMensagens (enviadas) {
 
     }
 
-/*function enviarMensagem () {
-    alert('oi');
-}*/
+}
