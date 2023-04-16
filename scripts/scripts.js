@@ -1,22 +1,38 @@
 axios.defaults.headers.common['Authorization'] = 'BSut5m20q7VmhDtxGHFWTdQI'
-console.log(axios);
 let nick = [];
 let n = 0;
-while (n < 2){
+let verificar = '';
+function perguntarNome () {
 let nickname = prompt('Qual o seu nome?');
 const nickObj = {name: nickname};
-console.log(nickObj);
 nick.push(nickObj);
 n++;
 let requisicaoName = axios.post('https://mock-api.driven.com.br/api/vm/uol/participants', nickObj);
-console.log(requisicaoName);
+requisicaoName.then(nickAceito);
+requisicaoName.catch(nickNaoAceito);
+//
 }
-/*requisicaoName.then(alert);
-
-function alert() {
-    console.log('A resposta foi enviada');
+perguntarNome();
+function nickAceito () {
+    console.log('funcionou');
+    //exibirMensagens();
+}
+function nickNaoAceito (naofoi) {
+    //apresentar novo prompt até que o nome seja válido
+    perguntarNome();
 }
 
-function enviarMensagem () {
+//function exibirMensagens (enviadas) {
+
+    let enviadasDoServidor = axios.get('https://mock-api.driven.com.br/api/vm/uol/messages');
+    console.log(enviadasDoServidor);
+    const mensagem = document.querySelector('.mensagens');
+    mensagem.innerHTML = '';
+
+    for (let i = 0; i < enviadasDoServidor.lenght; i++) {
+
+    }
+}
+/*function enviarMensagem () {
     alert('oi');
 }*/
