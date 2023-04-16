@@ -2,6 +2,8 @@ axios.defaults.headers.common['Authorization'] = 'BSut5m20q7VmhDtxGHFWTdQI'
 let nick = [];
 let n = 0;
 let verificar = '';
+
+
 function perguntarNome () {
 let nickname = prompt('Qual o seu nome?');
 const nickObj = {name: nickname};
@@ -13,16 +15,18 @@ requisicaoName.catch(nickNaoAceito);
 //
 }
 perguntarNome();
+
 function nickAceito () {
     console.log('funcionou');
-    //exibirMensagens();
+    exibirMensagens();
 }
+
 function nickNaoAceito (naofoi) {
     //apresentar novo prompt até que o nome seja válido
     perguntarNome();
 }
 
-/*function exibirMensagens (enviadas) {
+function exibirMensagens (enviadas) {
 
     let enviadasDoServidor = axios.get('https://mock-api.driven.com.br/api/vm/uol/messages');
     console.log(enviadasDoServidor);
@@ -31,7 +35,7 @@ function nickNaoAceito (naofoi) {
 
     for (let i = 0; i < enviadasDoServidor.lenght; i++) {
 
-    }*/
+    }
 
 /*function enviarMensagem () {
     alert('oi');
