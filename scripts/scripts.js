@@ -32,7 +32,7 @@ function nickNaoAceito (naofoi) {
     for (let i = 0; i < enviadasDoServidor.lenght; i++) {
 
     }
-}
+
 /*function enviarMensagem () {
     alert('oi');
 }*/
