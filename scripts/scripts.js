@@ -3,6 +3,7 @@ let nick = [];
 let n = 0;
 let verificar = '';
 
+let enviadasDoServidor = [];
 
 function perguntarNome () {
 let nickname = prompt('Qual o seu nome?');
@@ -19,6 +20,7 @@ perguntarNome();
 function nickAceito () {
     console.log('funcionou');
     exibirMensagens();
+   
 }
 
 function nickNaoAceito (naofoi) {
@@ -26,15 +28,21 @@ function nickNaoAceito (naofoi) {
     perguntarNome();
 }
 
-function exibirMensagens (enviadas) {
-
-    let enviadasDoServidor = axios.get('https://mock-api.driven.com.br/api/vm/uol/messages');
+function exibirMensagens () {
+    enviadasDoServidor = axios.get('https://mock-api.driven.com.br/api/vm/uol/messages');
     console.log(enviadasDoServidor);
+    enviadasDoServidor.then(renderizarMensagens);
+}
+
+function renderizarMensagens (){
+    console.log('ate aqui foi');
     const mensagem = document.querySelector('.mensagens');
     mensagem.innerHTML = '';
+    console.log(enviadasDoServidor);
 
     for (let i = 0; i < enviadasDoServidor.lenght; i++) {
-
+        mensagem.innerHTML +=
+        ` <div class="todos"><p>${enviadasDoServidor.time} ${enviadasDoServidor.data.from} para ${enviadasDoServidor.data.to}: ${enviadasDoServidor.data.message}${enviadasDoServidor.data.status}${enviadasDoServidor.data.private_message}</p></div>`
     }
 
 }

@@ -99,6 +99,11 @@ ion-icon:hover {
     margin-bottom: 4px;
 }
 
+.todos p {
+    font-size: 14px;
+    font-weight: 400px;
+    color: #000000;  
+}
 .privado {
     height: 63px;
     border-radius: 2px;
