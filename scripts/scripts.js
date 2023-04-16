@@ -1,5 +1,6 @@
 axios.defaults.headers.common['Authorization'] = 'BSut5m20q7VmhDtxGHFWTdQI'
 let nickname;
+let requisicaoName;
 let verificar = '';
 let nickObj = {name: ''};
 let enviadasDoServidor = [];
@@ -10,21 +11,24 @@ to: 'Todos',
 text: '',
 type: "message" 
 }
+let qtdeMensagem;
 
+perguntarNome();
 function perguntarNome () {
 nickname = prompt('Qual o seu nome?');
 nickObj.name = nickname;
-let requisicaoName = axios.post('https://mock-api.driven.com.br/api/vm/uol/participants', nickObj);
+caixaTextoDigitado.from = nickname;
+requisicaoName = axios.post('https://mock-api.driven.com.br/api/vm/uol/participants', nickObj);
 requisicaoName.then(nickAceito);
 requisicaoName.catch(nickNaoAceito);
 
 }
-perguntarNome();
+
 
 function nickAceito () {
     exibirMensagens();
     setInterval(atualizarStatus, 5000);
-    setInterval(renderizarMensagens, 3000);
+    setInterval(exibirMensagens, 3000);
 }
 
 function atualizarStatus() {
@@ -43,12 +47,11 @@ function exibirMensagens () {
 }
 
 function renderizarMensagens (foi){
-  
+    debugger
     let mensagem = document.querySelector('.mensagens');
     mensagem.innerHTML = '';
-    console.log(foi.data); 
-
-    for (let i = 0; i < foi.data.length; i++) {
+    qtdeMensagem = foi.data;
+    for (let i = 0; i < qtdeMensagem.length; i++) {
         if (foi.data[i].type === 'status') {
           mensagem.innerHTML +=
             `<div class="status" data-test="message"><span class="hora">${foi.data[i].time}
@@ -83,7 +86,9 @@ function enviarMensagem () {
     let textDigitado = document.getElementById('textoDigitado').value;
     caixaTextoDigitado.text = textDigitado
     enviar = axios.post('https://mock-api.driven.com.br/api/vm/uol/messages', caixaTextoDigitado);
-    enviar.then(renderizarMensagens);
+    enviar.then((qualquer) => {
+        console.log(qualquer);
+        exibirMensagens ()});
     enviar.catch(recarregarSala);
 }
 
